@@ -43,25 +43,25 @@ public class App {
 		}
 
 		final Server esServer = new Server(args).start();
-                try { 
-                    Client esClient = esServer.getClient();                                
+		try {
+			Client esClient = esServer.getClient();
 
-                    if(args.isRecreateIndex()) {
-                            startRecreatingIndex(esServer);                        
-                            return;
-                    }
+			if(args.isRecreateIndex()) {
+				startRecreatingIndex(esServer);
+				return;
+			}
 
-                    if(args.isNominatimImport()) {
-                            startNominatimImport(args, esServer, esClient);
-                            return;
-                    }
+			if(args.isNominatimImport()) {
+				startNominatimImport(args, esServer, esClient);
+				return;
+			}
 
-                    // no special action specified -> normal mode: start search API
-                    startApi(args, esClient);
-                
-                } finally {
-                    // esServer.shutdown();
-                }
+			// no special action specified -> normal mode: start search API
+			startApi(args, esClient);
+
+		} finally {
+			// esServer.shutdown();
+		}
 	}
 
 	/**
